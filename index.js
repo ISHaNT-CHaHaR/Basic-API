@@ -26,6 +26,9 @@ console.log("will read file!");
 
 //SERVER
  
+const data =  fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8'); 
+           const  dataObj=JSON.parse(data);
+            
 const server=http.createServer((req,res)=>{
     console.log(req.url);  
     const pathname = req.url;
@@ -39,15 +42,12 @@ const server=http.createServer((req,res)=>{
         res.end('product ');
     }
     else if(pathname ==='/api'){
-        fs.readFile (`${__dirname}/dev-data/data.json`,'utf-8',(err,data)=>
-        {
-            productData=JSON.parse(data);
-            console.log(productData);
+       
             res.writeHead(200,{'Content-type':'application/json'});
             res.end(data);
            
 
-        });
+      
 
         
        
