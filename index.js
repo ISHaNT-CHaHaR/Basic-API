@@ -43,11 +43,14 @@ const server=http.createServer((req,res)=>{
         {
             productData=JSON.parse(data);
             console.log(productData);
-        }
-        );
+            res.writeHead(200,{'Content-type':'application/json'});
+            res.end(data);
+           
+
+        });
 
         
-        res.end('API');
+       
     } else{
         res.writeHead(404);
         res.end('<h1> page not found!</h1>');
